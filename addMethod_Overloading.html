@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script>
-      console.log(
-        "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ"
-      );
-      var TF = {
-        window: {
-          getMsgBox: function (code) {
-            var window = "윈돌우";
-            console.log("여기는 tf window안에 있는 리터럴입니다.");
-            return TF.window.getMsgBox(window, code);
-          },
-          getcheck: function (a) {
-            return false;
-          },
-        },
-      };
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+            var TF = {
+                window: {
+                    getMsgBox: function (code) {
+                        var window = "윈돌우";
+                        console.log("여기는 tf window안에 있는 리터럴입니다.");
+                        return TF.window.getMsgBox(window, code);
+                    },
+                    getcheck: function (a) {
+                        return false;
+                    },
+                },
+            };
 
-      addMethod(TF.window, "getMsgBox", function (code, a) {
-        var result;
-        // console.log('code ==> ' + code);
-        // var code = _.isNumber(code) ? code : parseInt(code);
-        console.log("addmethod호출하자");
+            addMethod(TF.window, "getMsgBox", function (code, a) {
+                var result;
+                // console.log('code ==> ' + code);
+                // var code = _.isNumber(code) ? code : parseInt(code);
+                console.log("addmethod호출하자");
 
-        return result;
-      });
+                return result;
+            });
 
-      function addMethod(object, name, fn) {
-        console.log(object);
-        console.log("name ==> " + name);
-        console.log("fn ==> " + fn);
-        var old = object[name];
-        console.log("old ==> " + old);
+            function addMethod(object, name, fn) {
+                console.log(object);
+                console.log("name ==> " + name);
+                console.log("fn ==> " + fn);
+                var old = object[name];
+                console.log("old ==> " + old);
 
-        object[name] = function () {
-          console.log("fn.length ==> " + fn.length);
-          console.log("arguments.length ==> " + arguments.length);
-          console.log("arguments[0] ==> " + arguments[0]);
-          console.log(
-            "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ"
-          );
-          if (fn.length == arguments.length) {
-            console.log("if 안에 들어왔어여");
+                object[name] = function () {
+                    console.log("fn.length ==> " + fn.length);
+                    console.log("arguments.length ==> " + arguments.length);
+                    console.log("arguments[0] ==> " + arguments[0]);
+                    console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+                    if (fn.length == arguments.length) {
+                        console.log("if 안에 들어왔어여");
 
-            return fn.apply(this, arguments);
-          } else {
-            if (typeof old == "function") {
-              console.log("else 안에 들어왔어요");
-              return old.apply(this, arguments);
+                        return fn.apply(this, arguments);
+                    } else {
+                        if (typeof old == "function") {
+                            console.log("else 안에 들어왔어요");
+                            return old.apply(this, arguments);
+                        }
+                    }
+                };
             }
-          }
-        };
-      }
 
-      TF.window.getMsgBox("메세지박스가즈아~");
-    </script>
-  </head>
-  <body>
-    111
-  </body>
+            TF.window.getMsgBox("메세지박스가즈아~");
+        </script>
+    </head>
+    <body>
+        111
+    </body>
 </html>
