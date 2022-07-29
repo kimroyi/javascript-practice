@@ -494,15 +494,3 @@ example.call(null, 1, 2, 3);
 example.apply(null, [1, 2, 3]);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
-
-function Obj(name, age) {
-	this.name = name;
-	this.age = age;
-}
-
-Obj.prototype.print = function () {
-	console.log("name : " + this.name + " age : " + this.age);
-};
-
-var student1 = new Obj("철수", "20");
-student1.print();
