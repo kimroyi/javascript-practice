@@ -494,3 +494,51 @@ example.call(null, 1, 2, 3);
 example.apply(null, [1, 2, 3]);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+// unshift() 메서드는 새로운 요소를 배열의 맨 앞쪽에 추가하고, 새로운 길이를 반환합니다.
+var ArrPaly = [];
+ArrPaly.push('1');
+ArrPaly.push('2');
+ArrPaly.unshift('3');
+console.log(ArrPaly.join('+'))
+//result : 3+1+2
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+const reduceArr = [3, -1, 10, 5, 0];
+
+const sum = reduceArr.reduce(function (acc, cur) {
+	return acc + cur;
+})
+
+console.log(sum);
+
+const sum1 = reduceArr.reduce((acc, value) => acc + value);
+console.log(sum1);
+
+var reduceArr2 = [
+	{
+		name: "james",
+		age: 20
+	},
+	{
+		name: "tom",
+		age: 25
+	},
+	{
+		name: "terry",
+		age: 30
+	},
+	{
+		name: "peter",
+		age: 35
+	},
+]
+
+const sum2 = reduceArr2.reduce((acc, value) => acc + value.age, 0);
+console.log(sum2);
+console.log(sum2 / reduceArr2.length);
+
+
+
+
