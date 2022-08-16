@@ -539,6 +539,12 @@ const sum2 = reduceArr2.reduce((acc, value) => acc + value.age, 0);
 console.log(sum2);
 console.log(sum2 / reduceArr2.length);
 
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
 
+var func = () => {
+	console.log("함수 표현식 테스트");
+}
 
+func();
 
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
