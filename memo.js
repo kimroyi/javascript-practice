@@ -1,5 +1,8 @@
 var _ = require("underscore");
 const { lpad } = require("underscore.string");
+var CryptoJS = require("crypto-js");
+var AES = require("crypto-js/aes");
+var SHA256 = require("crypto-js/sha256");
 
 var a = 0;
 for (var i = 0; i < 10; i++) {
@@ -546,5 +549,172 @@ var func = () => {
 }
 
 func();
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+console.log(CryptoJS.HmacSHA1("Message", "Key"));
+console.log(SHA256("Message"));
+
+
+var str = "안녕하세요.	ㅋㅋㅋㅋㅋㅋ	ㅎㅎㅎㅎㅎㅎㅎ";
+
+// tab이 포함된 문자열인지 확인
+// 결과값 : true
+console.log(/\t/gi.test(str));
+// 공백(space) 포함된 문자열인지 확인
+// 결과값 : false 
+console.log(/ /gi.test(str));
+
+// tab -> space 4번으로 변경
+str = str.replace(/\t/gi, " ");
+
+// 결과값 : false
+console.log(/\t/gi.test(str));
+// 결과값 : true 
+console.log(/ /gi.test(str));
+
+// 결과 문자열
+console.log(str);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+var numbering;
+
+for (var i = 0; i < 12; i++) {
+	var number = (i + 1);
+	numbering = ((number.toString().length) <= 1 ? '0' + number : number);
+	console.log(numbering)
+}
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+// 치환 정규식 방식 & replaceAll 사용
+var string = "2022-10-22 19:92:22";
+console.log(string.replace(/\-|\:|\s/g, ''));
+console.log(string.replaceAll("-", '').replaceAll(":", '').replaceAll(" ", ''));
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var fileName = "aaa.PDF";
+var fileSplit = fileName.split('.');
+var fileSplitpop = fileSplit.pop();
+var lastFile = fileName.split('.').reverse()[0].toLowerCase();
+var fileLength = fileName.length;
+var fileDot = fileName.lastIndexOf(".");
+var result = fileName.substring(fileDot + 1, fileLength).toLowerCase();
+fileSplit.push(result);
+console.log(fileName.split('.').reverse()[0].toLowerCase());
+console.log(fileName);
+console.log(lastFile);
+console.log(`fileDot = ${fileDot}`);
+console.log(`${result}`);
+console.log(fileSplit.join('.'));
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+console.log("예시 1.");
+var fileName = "aaa.PDF";
+var fileArray = fileName.split('.'); // 파일명 문자열 타입을 (.)기준으로 잘라서 배열로 반환(split)
+fileArray.pop(); // 배열의 마지막 요소 제거 ex:) .png, .pdf 등
+var fileDot = fileName.split('.').reverse()[0].toLowerCase(); // 배열을 순서를 뒤집고 제일 처음 배열 인덱스의 값을 가져와 소문자로 변환한다.
+fileArray.push(fileDot); // 소문자로 변환된 값을 배열에 삽입한다.
+var resultFileName = fileArray.join('.'); // 배열의 값들을 (.)으로 연결하여 하나의 문자열로 만든다.
+console.log(resultFileName);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+console.log("예시 2.");
+var fileName = "aAa.PDF";
+var fileDot = fileName.lastIndexOf("."); // 끝부터 시작하여 처음으로 만나는 (.)의 인덱스 
+var firstName = fileName.substring(0, fileDot); // 문자열을 0~fileDot인덱스 수만큼 자른다.
+var lastName = fileName.substring(fileDot + 1, fileLength).toLowerCase(); // 문자열을 fileDot인덱스+1~문자열길이만큼 자르고 소문자로 변환
+var result = firstName.concat('.', lastName); // firstName + '.' + lastName 3개의 값을 하나의 문자열로 만든다.
+console.log(result);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var fileName = "aaa.PDF";
+var index = fileName.lastIndexOf(".") + 1;	//파일경로를 제외한  파일명+확장자명	
+var index2 = fileName.lastIndexOf("\\") + 1;	//파일명을 소문자로 변화	
+var extention = (fileName.substring(index, fileName.length)).toLowerCase();
+console.log(extention);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var fileName = "aaa.PDF";
+var extension = fileName.slice(fileName.indexOf(".") + 1).toLowerCase();
+console.log(extension);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+console.log("예시 3.");
+var fileName = "aaa.PDF";
+var extention = (fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)).toLowerCase();
+var result = fileName.trim().replace(/(.PDF|.PNG|.JPG|.JPEG|.GIF)$/, '.' + extention); //공백을 제거한 후 .PDF, .PNG, .JPG, .JPEG, .GIF 문자열이 있을 경우 . + extention(변수)로 변환
+console.log(result);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+console.log("예시 4.");
+var fileName = "aaa.PDF";
+var extention = fileName.split('.').reverse()[0].toLowerCase();
+var result = fileName.trim().replace(/(.PDF|.PNG|.JPG|.JPEG|.GIF)$/, '.' + extention);
+console.log(result);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+var fileName = "aaa.PDF";
+var fileType = fileName.split('.').pop().toLowerCase();
+var firstFileName = fileName.substring(0, fileName.indexOf('.'));
+var result1 = firstFileName + '.' + fileType,
+	result2 = [firstFileName, fileType].join('.'),
+	result3 = firstFileName.concat('.', fileType),
+	result4 = ''.concat(firstFileName, '.', fileType);
+console.log(result1);
+console.log(result2);
+console.log(result3)
+console.log(result4);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+// 배열이 특정 조건을 만족시키는지 확인하고자 하는 경우에는 Array 객체의 every 메서드를 사용하면
+// 모든 원소가 조건을 통과하는지 확인할 수 있습니다.
+// 예를 들어 다음의 코드는 배열의 모든 원소가 알파벳과 숫자로만 이루어졌는지 확인하는 예제입니다.
+
+var arrElement = [123, 'aaa', 'abc', '-', 33, 'DDD'];
+var arrElement2 = ['aaa', 'abc', 'DDD'];
+
+// 테스트하는 함수
+function textValue(el, idx, arr) {
+	var textExp = /^[a-zA-Z]+$/;
+	console.log(el);
+	return textExp.test(el);
+}
+
+// 테스트 실행
+var result = arrElement.every(textValue);
+var result2 = arrElement2.every(textValue);
+
+console.log(result, result2);
+
+// Array 객체의 some 메서드를 사용하면 주어진 조건을 만족시키는 요소가 최소 1개 이상 있는지를 확인할 수 있습니다.
+var arr = [123, 'aaa', 'abc', '-', 33, 'DDD'];
+
+var result3 = arr.some(textValue);
+console.log(result3);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+function dataFunction(objData) {
+	var functionData = {
+		bb: "22"
+	};
+
+	console.log(_.extend(
+		{
+			cc: "req",
+		},
+		functionData,
+		objData
+	));
+
+}
+var data = {};
+data.aa = "11";
+dataFunction(data);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
