@@ -718,3 +718,46 @@ data.aa = "11";
 dataFunction(data);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var initData = {
+	a: "a",
+	b: "b"
+}
+var resultData = initData.a;
+resultData = "aa";
+console.log(resultData);
+console.log(initData.a);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var sortEx1 = _.sortBy([2, 1, 3, 6, 5, 4], function (num) { return num });
+// => [1, 2, 3, 4, 5, 6]
+console.log(sortEx1);
+
+var stooges = [{ name: 'moe', age: 40 }, { name: 'larry', age: 50 }, { name: 'curly', age: 60 }];
+var sortEx2 = _.sortBy(stooges, 'name');
+// => [{ name: 'curly', age: 60 }, { name: 'larry', age: 50 }, { name: 'moe', age: 40 }];
+console.log(sortEx2);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+var arrJson = [];
+var jsonString = '[{ "codeflag": "1090", "bascode": "A", "bascdnm": "일반", "remark": "04" }, { "codeflag": "1090", "bascode": "F", "bascdnm": "당일", "remark": "02" }, { "codeflag": "1090", "bascode": "V", "bascdnm": "일", "remark": "03" }, { "codeflag": "1090", "bascode": "S", "bascdnm": "간", "remark": "01" }, { "codeflag": "1090", "bascode": "W", "bascdnm": "전", "remark": "05" }, { "codeflag": "1090", "bascode": "P", "bascdnm": "실", "remark": "11" }, { "codeflag": "1090", "bascode": "I", "bascdnm": "분", "remark": "12" }, { "codeflag": "1090", "bascode": "X", "bascdnm": "옥", "remark": "13" }, { "codeflag": "1090", "bascode": "O", "bascdnm": "임", "remark": "14" }, { "codeflag": "1090", "bascode": "H", "bascdnm": "조", "remark": "15" }, { "codeflag": "1090", "bascode": "N", "bascdnm": "통", "remark": "16" }]'
+var objJson = JSON.parse(jsonString);
+var sortJson = _.sortBy(objJson, 'remark');
+
+_.each(sortJson, function (s, idx) {
+	var json = { cd: s.bascode, nm: s.bascdnm };
+	arrJson.push(json);
+
+	if (s.bascode === "A") {
+		json = { cd: "-", nm: "----------------" };
+		arrJson.push(json);
+	}
+});
+console.log(arrJson);
+
+var json = { cd: "ss", nm: "ss" };
+json += { cd: "1", nm: "2" };
+console.log(JSON.stringify(json));
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
