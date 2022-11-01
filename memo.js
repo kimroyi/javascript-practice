@@ -761,3 +761,11 @@ json += { cd: "1", nm: "2" };
 console.log(JSON.stringify(json));
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+var colNames = ['name', 'age'];
+_.each(colNames, function (item) {
+	console.log(item);
+});
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
