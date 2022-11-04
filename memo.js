@@ -769,3 +769,29 @@ _.each(colNames, function (item) {
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
 
+var checkItems = ["vss", "ss", "sdf"]
+console.log(_.indexOf(checkItems, "vss"));
+
+console.log(_.findIndex(checkItems, "vs"));
+
+console.log("vss".indexOf('vss1'));
+
+for (item of checkItems) {
+	console.log("ss".startsWith("vss1"));
+	// if ("vss1".startsWith(item)) {
+
+	// }
+}
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+String.prototype.startsWith = function (search) {
+	console.log(this);
+	return true;
+}
+
+var aaa = "Monitor";
+aaa.startsWith("123");
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
