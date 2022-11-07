@@ -785,9 +785,11 @@ for (item of checkItems) {
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
 
-String.prototype.startsWith = function (search) {
-	console.log(this);
-	return true;
+if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function (search) {
+		console.log(this);
+		return true;
+	}
 }
 
 var aaa = "Monitor";
@@ -795,3 +797,19 @@ aaa.startsWith("123");
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
 
+var item = "abcdefghijklm";
+var vsitem = "abcd";
+console.log(item.substr(0, vsitem.length));
+console.log(item.substring(0, vsitem.length));
+console.log(`구분자~~~~~~~~~~~~~1`);
+console.log(item.substr(3, vsitem.length));
+console.log(item.substring(3, vsitem.length));
+console.log(`구분자~~~~~~~~~~~~~2`);
+console.log(item.substr(0, 10));
+console.log(item.substring(0, 10));
+console.log(`구분자~~~~~~~~~~~~~3`);
+console.log(item.substr(2, 10)); // 시작위치부터 몇개
+console.log(item.substring(2, 10));
+
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
