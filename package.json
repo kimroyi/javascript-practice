@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto-js": "^4.1.1",
+    "diff-match-patch": "^1.0.5",
     "json": "^11.0.0",
     "underscore": "^1.13.3",
     "underscore.string": "^3.3.6"
