@@ -828,3 +828,10 @@ console.log(pre.prefixArray(['Lee', 'Kim']));
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
 
+var bs = {
+	bb: "11"
+}
+console.log(_.size(bs));
+console.log(Object.keys(bs).length);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
