@@ -951,3 +951,35 @@ const b1 = decodeByAES256(rk1, eb1);
 console.log(b1);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+// 예시
+var hiddenColMeta = {
+	"SEND": {
+		"18761-7": {
+			trueCols: [11, 2, 32, 4, 5],
+			falseCols: [6, 7, 8, 9, 10]
+		},
+		"11488-4": {
+			trueCols: [22, 12, 13, 23, 32],
+			falseCols: [16, 4, 2, 13, 11]
+		}
+	},
+	"RECEIVE": {
+		trueCols: [2, 3, 4, 5, 6],
+		falseCols: [33, 45, 21, 34]
+	}
+}
+
+var transferMode = "SEND";
+var classCode = '18761-7';
+var loopMeta = hiddenColMeta[transferMode][classCode];
+
+if (loopMeta) {
+	_.each(loopMeta.trueCols, function (col) {
+		console.log("grid1.colHidden(" + col + ") = true");
+	});
+
+	_.each(loopMeta.falseCols, function (col) {
+		console.log("grid1.colHidden(" + col + ") = false");
+	});
+}
