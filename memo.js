@@ -835,3 +835,44 @@ console.log(_.size(bs));
 console.log(Object.keys(bs).length);
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+var sDept = '000268';
+var deptMeta = {
+	'000268': {
+		trueControls: ['ctkind', 'cbkind'],
+		falseControls: ['cttax', 'cttax2', 'cbtax']
+	},
+	'000290': {
+		trueControls: ['cttax', 'cttax2', 'cbtax'],
+		falseControls: ['ctkind', 'cbkind']
+	},
+	'default': {
+		falseControls: ['cttax', 'cttax2', 'cbtax', 'ctkind', 'cbkind']
+	}
+}
+
+deptMeta['000340'] = deptMeta['000290'];
+deptMeta['000353'] = deptMeta['000290'];
+deptMeta['000320'] = deptMeta['000290'];
+deptMeta['000300'] = deptMeta['000290'];
+
+_.each(deptMeta[sDept], function (control, list, ss) {
+	console.log(control);
+	console.log(list);
+	console.log(ss);
+});
+
+// if (deptMeta[sDept]) {
+// 	_.each(deptMeta[sDept].trueControls, function (control) {
+// 		console.log("true");
+// 	});
+
+// 	_.each(deptMeta[sDept].falseControls, function (control) {
+// 		console.log("false");
+// 	});
+// } else {
+// 	_.each(deptMeta['default'].falseControls, function (control) {
+// 		console.log("false");
+// 	});
+// }
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
