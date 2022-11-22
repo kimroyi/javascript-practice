@@ -876,3 +876,78 @@ _.each(deptMeta[sDept], function (control, list, ss) {
 // }
 
 console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+
+// 암호화 할 데이터
+
+const dataa = {
+	username: 'Jinho Kim',
+	age: 25
+};
+// const dataa = "123";
+
+// 복호화 키 지정
+
+const privateKey = 'secret key';
+
+
+// AES알고리즘 사용 암호화
+
+const encrypted = CryptoJS.AES.encrypt(JSON.stringify(dataa), privateKey).toString();
+console.log(`encrypted ==> ${encrypted}`);
+
+// AES알고리즘 사용 복호화 ( 복구 키 필요 )
+
+const bytes = CryptoJS.AES.decrypt(encrypted, privateKey);
+console.log(`bytes ==> ${bytes}`);
+
+// 인코딩, 문자열로 변환, JSON 변환
+
+const decrypted = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+console.log(`decrypted ==> ${decrypted}`);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');
+
+/**
+ * @description 암호화
+ * @param {string} key - 암호화 key값
+ * @param {string} data - 암호화할 데이터
+ * @returns 
+ */
+function encodeByAES56(key, data) {
+	const cipher = CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(key), {
+		iv: CryptoJS.enc.Utf8.parse(""),
+		padding: CryptoJS.pad.Pkcs7,
+		mode: CryptoJS.mode.CBC
+	});
+	return cipher.toString();
+}
+
+const k = "key";
+const rk = k.padEnd(32, " "); // AES256은 key 길이가 32자여야 함
+const b = "암호화는 보안을 위해 매우 중요합니다.";
+const eb = encodeByAES56(rk, b);
+console.log(eb);
+
+/**
+ * @description 복호화
+ * @param {string} key - 암호화 key값
+ * @param {string} data - 암호화할 데이터
+ * @returns 
+ */
+function decodeByAES256(key, data) {
+	const cipher = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(key), {
+		iv: CryptoJS.enc.Utf8.parse(""),
+		padding: CryptoJS.pad.Pkcs7,
+		mode: CryptoJS.mode.CBC
+	});
+	return cipher.toString(CryptoJS.enc.Utf8);
+}
+
+const k1 = "key"; // 암호화에서 사용한 값과 동일하게 해야함
+const rk1 = k1.padEnd(32, " "); // AES256은 key 길이가 32자여야 함
+const eb1 = eb;
+const b1 = decodeByAES256(rk1, eb1);
+console.log(b1);
+
+console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
