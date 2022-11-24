@@ -1007,3 +1007,8 @@ enemyList.forEach((item, index) => {
 })
 
 console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+
+let Value = '222'
+let Codes = ['111', '222', '333'];
+console.log(_.contains(Codes, Value) ? '배열안에 값이 존재합니다.' : '배열안에 값이 없습니다.');
+
