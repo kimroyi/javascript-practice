@@ -3,6 +3,7 @@ const { lpad } = require("underscore.string");
 var CryptoJS = require("crypto-js");
 var AES = require("crypto-js/aes");
 var SHA256 = require("crypto-js/sha256");
+var canvas = require("canvas");
 
 var a = 0;
 for (var i = 0; i < 10; i++) {
@@ -983,3 +984,26 @@ if (loopMeta) {
 		console.log("grid1.colHidden(" + col + ") = false");
 	});
 }
+
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+
+let enemyList = [];
+function Enemy() {
+	this.x = 0;
+	this.y = 0;
+	this.init = function () {
+		this.y = 0;
+		this.x = 47;
+		enemyList.push(this);
+	};
+}
+
+var en = new Enemy;
+en.init();
+// console.log(enemyList)
+enemyList.forEach((item, index) => {
+	// ctx.drawImage(enemyImage, item.x, item.y);
+	console.log(item.x);
+})
+
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
