@@ -1012,3 +1012,27 @@ let Value = '222'
 let Codes = ['111', '222', '333'];
 console.log(_.contains(Codes, Value) ? '배열안에 값이 존재합니다.' : '배열안에 값이 없습니다.');
 
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+
+let arr11 = [{
+	a: 1,
+	alive: false
+},
+{
+	a: 2,
+	alive: true
+},
+{
+	a: 3,
+	alive: true
+},
+{
+	a: 4,
+	alive: false
+},
+];
+
+arr11 = arr11.filter(item => !item.alive);
+console.log(arr11);
+
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
