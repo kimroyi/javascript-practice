@@ -1036,3 +1036,8 @@ arr11 = arr11.filter(item => !item.alive);
 console.log(arr11);
 
 console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+
+let testJson = [{ 'cc': '1', 'dd': '2' }, { 'cc': '22', 'dd': '3' }];
+_.each(testJson, (json) => {
+	console.log(json);
+})
