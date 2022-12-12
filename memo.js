@@ -1041,3 +1041,26 @@ let testJson = [{ 'cc': '1', 'dd': '2' }, { 'cc': '22', 'dd': '3' }];
 _.each(testJson, (json) => {
 	console.log(json);
 })
+
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+
+function at(n) {
+	n = parseInt(n, 10) || 0
+
+	// 음수 일 경우 길이 만큼 더한다. 이렇게 하면 음수 인덱싱을 대응할 수 있다.
+	if (n < 0) {
+		n += this.length
+	}
+
+	// 인덱싱에 대응할 수 없을 경우 undefined를 리턴한다.
+	if (n < 0 || n >= this.length) {
+		return undefined
+	}
+
+	return this[n]
+}
+
+let testa = [1, 2, 4, 5];
+console.log(testa.at(0));
+
+console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
