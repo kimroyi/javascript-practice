@@ -1064,3 +1064,18 @@ let testa = [1, 2, 4, 5];
 console.log(testa.at(0));
 
 console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+// Math.floor() 대신 사용될 수 있다.
+// 속도 측면에서는 ~~ 사용하는 것이 빠르지만 코드에 ~~ 이런 표기가 많을 경우 가독성이 떨어진다.
+function convertToBinary1(number) {
+	let num = number;
+	let binary = (num % 2).toString();
+	for (; num > 1;) {
+		num = parseInt(num / 2);
+		binary = (num % 2) + (binary);
+	}
+	console.log(binary);
+}
+
+let aaa123 = 3.2;
+console.log(convertToBinary1(3.1));
+console.log(~~aaa123);
