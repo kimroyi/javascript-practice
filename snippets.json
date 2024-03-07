@@ -1,0 +1,25 @@
+{
+	"Consolelog": {
+		"prefix": ["ro_log"],
+		"body": [
+		"console.log('$TM_FILENAME_BASE:$TM_LINE_NUMBER $CLIPBOARD', $CLIPBOARD);"
+	],
+	"description": "파일명+라인번호+클립보드 로그"
+	},
+
+	"Basic_Consolelog": {
+		"prefix": ["ro_basic_log"],
+		"body": [
+		"console.log('$CLIPBOARD: ', $CLIPBOARD);"
+	],
+	"description": "클립보드 기본 로그"
+	},
+
+	"Line": {
+		"prefix": ["ro_line"],
+		"body": [
+		"console.log('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ');"
+	],
+	"description": "라인"
+	}
+}
