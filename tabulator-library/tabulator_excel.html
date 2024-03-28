@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vendor/tabulator.js"></script>
+    <link href="./vendor/tabulator.css" rel="stylesheet">
+    <script src="./vendor/jquery.min.js"></script>
+    <script src="./vendor/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <button id="download-xlsx">엑셀다운로드</button>
+    <div id="example-table"></div>
+
+    <script>
+        $(document).ready(function () {
+            //define data
+            var tabledata = [
+                { ids: "1", name: "Billy Bob", age: 12, gender: "male", height: 95, col: "red", dob: "14/05/2010" },
+                { ids: "2", name: "Jenny Jane", age: 42, gender: "female", height: 142, col: "blue", dob: "30/07/1954" },
+                { ids: "3", name: "Steve McAlistaire", age: 35, gender: "male", height: 176, col: "green", dob: "04/11/1982" },
+                { ids: "4", name: "Billy Bob", age: 12, gender: "male", height: 95, col: "red", dob: "14/05/2010" },
+                { ids: "5", name: "Jenny Jane", age: 42, gender: "female", height: 142, col: "blue", dob: "30/07/1954" },
+                { ids: "6", name: "Steve McAlistaire", age: 35, gender: "male", height: 176, col: "green", dob: "04/11/1982" },
+                { ids: "7", name: "Billy Bob", age: 12, gender: "male", height: 95, col: "red", dob: "14/05/2010" },
+                { ids: "8", name: "Jenny Jane", age: 42, gender: "female", height: 142, col: "blue", dob: "30/07/1954" },
+                { ids: "9", name: "Steve McAlistaire", age: 35, gender: "male", height: 176, col: "green", dob: "04/11/1982" },
+                { ids: "10", name: "Billy Bob", age: 12, gender: "male", height: 95, col: "red", dob: "14/05/2010" },
+                { ids: "11", name: "Jenny Jane", age: 42, gender: "female", height: 142, col: "blue", dob: "30/07/1954" },
+                { ids: "12", name: "Steve McAlistaire", age: 35, gender: "male", height: 176, col: "green", dob: "04/11/1982" },
+            ];
+
+            //define table
+            var table = new Tabulator("#example-table", {
+                data: tabledata,
+                // autoColumns:true,
+                selectable: true,
+                layout: "fitColumns",
+                height: "500px",
+                // groupBy:"gender",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [5, 10, 20],
+                // movableColumns:true, // BUG: 해당 옵션이 켜져 있는 상태에서 editor: "list"속성을 실행하면 row 행높이가 비정상적으로 높아짐
+                paginationCounter: "rows",
+                columns: [
+                    {
+                        formatter: "rowSelection", width: 50, titleFormatter: "rowSelection", hozAlign: "center", headerSort: false, cellClick: function (e, cell) {
+                            cell.getRow().toggleSelect();
+                        }
+                    },
+                    {
+                        title: "Name", field: "name", width: 300, frozen: true, editor: "input", cellClick: function (e, cell) {
+                            console.log(cell);
+                        }
+                    },
+                    { title: "age", field: "age", hozAlign: "center", sorter: "number", editor: true },
+                    { title: "Gender", field: "gender", editor: "list", editorParams: { values: { "male": "Male", "female": "Female", "unknown": "Unknown" } } },
+                    { title: "Height", field: "height", hozAlign: "center" },
+                    { title: "Favourite Color", field: "col", hozAlign: "center" },
+                    { title: "Date Of Birth", field: "dob", hozAlign: "center", sorter: "date", editor: true },
+                    { title: "Driver", field: "car", hozAlign: "center" },
+                ],
+            });
+
+            $("#select-all").on("click", function (e) {
+                table.selectRow();  // 페이징 처리된 모든 Row 선택 됨
+            });
+
+            $("#deselect-all").on("click", function (e) {
+                table.deselectRow();    // 패이징 처리된 모든 Row 선택 해제 됨
+            });
+
+            $("#download-xlsx").on("click", function (e) {
+                table.download("xlsx", "data.xlsx");
+            });
+
+            // Click event
+            table.on("rowClick", function (e, row) {
+                console.log("Row " + row.getIndex() + " Clicked!!!!");
+            });
+
+        });
+    </script>
+</body>
+
+</html>
