@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Example</title>
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h2>jQuery Example</h2>
+
+<button id="click-me">Click Me!</button>
+<p id="output"></p>
+<p id="firstName"></p>
+
+<script>
+// jQuery를 사용하여 문서가 준비되면 실행되는 코드
+$(document).ready(function(){
+    // 버튼 클릭 이벤트 핸들러
+    $("#click-me").click(function(){
+        // 버튼을 클릭하면 출력란에 텍스트를 추가
+        $("#output").text("버튼이 클릭되었습니다!");
+    });
+
+    var asyncResult = asynchronousTest();
+    console.log(`결과 값은 undefined : ${asyncResult}`);
+
+    var syncResult = synchronousTest();
+    console.log(`결과 값은 존재! : ${syncResult}`);
+
+});
+
+function asynchronousTest() {
+    var result;
+    $.ajax({
+        type: "GET",
+        url: "https://reqres.in/api/users",
+        data: {
+            page: 2
+        },
+        success: function (response) {
+            result = response.data[0].first_name;
+            $('#firstName').text(response.data[0].first_name);
+        }
+    });
+
+    console.log('비동기 처리!');
+
+    return result;
+}
+
+function synchronousTest() {
+    var result;
+    $.ajax({
+        type: "GET",
+        url: "https://reqres.in/api/users",
+        data: {
+            page: 2
+        },
+        async: false,
+        success: function (response) {
+            result = response.data[0].first_name;
+            $('#firstName').text(response.data[0].first_name);
+        }
+    });
+
+    console.log('동기 처리!');
+
+    return result;
+}
+</script>
+
+</body>
+</html>
