@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataTables Multi-Cell Selection Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <style>
+        .selected-cell {
+            background-color: #d9edf7; /* Highlight selected cells */
+        }
+    </style>
+</head>
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <!-- Add more rows here -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            var table = $('#example').DataTable(); // Initialize DataTables
+
+            var isMouseDown = false;
+            var startCell = null;
+
+            $('#example tbody').on('mousedown', 'td', function(e) {
+                e.preventDefault();
+                isMouseDown = true;
+                startCell = this;
+                clearSelection();  // Clear previous selections
+                $(this).addClass('selected-cell');
+                return false; // prevent text selection
+            }).on('mouseover', 'td', function(e) {
+                if (isMouseDown) {
+                    selectRange(startCell, this);
+                }
+            }).on('mouseup', function() {
+                isMouseDown = false;
+            });
+
+            $(document).mouseup(function() {
+                isMouseDown = false;
+            });
+
+            function clearSelection() {
+                $('#example td').removeClass('selected-cell');
+            }
+
+            function selectRange(startCell, endCell) {
+                clearSelection();
+
+                var start = $(startCell).index();
+                var end = $(endCell).index();
+                var startRow = $(startCell).parent().index();
+                var endRow = $(endCell).parent().index();
+
+                var rowStart = Math.min(startRow, endRow);
+                var rowEnd = Math.max(startRow, endRow);
+                var colStart = Math.min(start, end);
+                var colEnd = Math.max(start, end);
+
+                for (var row = rowStart; row <= rowEnd; row++) {
+                    for (var col = colStart; col <= colEnd; col++) {
+                        $('#example tbody tr').eq(row).find('td').eq(col).addClass('selected-cell');
+                    }
+                }
+            }
+
+            $(document).on('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'c') {
+                    e.preventDefault();
+                    copySelectedCells();
+                }
+            });
+
+            function copySelectedCells() {
+                var selectedData = [];
+                var rows = $('#example tbody tr').map(function() {
+                    var rowData = $(this).find('.selected-cell').map(function() {
+                        return $(this).text();
+                    }).get().join('\t');
+                    return rowData;
+                }).get();
+
+                selectedData = rows.filter(function(row) {
+                    return row.trim() !== ''; // Filter out empty rows
+                }).join('\n'); // Separate rows by new lines
+
+                navigator.clipboard.writeText(selectedData)
+                    .then(() => alert('Copied to clipboard!'))
+                    .catch(err => console.error('Failed to copy:', err));
+            }
+
+        });
+    </script>
+</body>
+</html>
