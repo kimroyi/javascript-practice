@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DataTables Checkbox Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="./checkBoxManager.js"></script>
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5em;
+        }
+
+        .select-checkbox {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="toggleSelect">전체선택</button>
+    <input type="number" id="startRow" placeholder="Start Row" min="1">
+    <input type="number" id="endRow" placeholder="End Row" min="1">
+    <button id="selectRange">부분선택</button>
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data rows -->
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+            $('#example').checkboxManager({
+                selectAllButton: '#toggleSelect',
+                rangeButton: '#selectRange',
+                startRowInput: '#startRow',
+                endRowInput: '#endRow'
+            });
+        });
+    </script>
+</body>
+
+</html>
