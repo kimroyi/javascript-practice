@@ -1,0 +1,67 @@
+<!-- 고정 열 처리 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DataTables Fixed Columns Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.3.0/css/fixedColumns.dataTables.min.css"> -->
+    <link rel="stylesheet" href="./vendor/fixedcolumns/3.3.0/css/fixedColumns.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="./vendor/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script> -->
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.5em;
+        }
+
+        .select-checkbox {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data rows -->
+            <tr>
+                <td><input type="checkbox" class="select-checkbox"></td>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,8001111112111111111111111121111111111121111111111121111111111121111111121111111111121111111111121111111111121111111121111111111121111111111121111111111121112111111111112111111111112111111111112111111111111</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            const opts = {
+                scrollX: true,
+                fixedColumns: {
+                    leftColumns: 2 // Number of columns to fix on the left side
+                }
+            }
+            const table = $('#example').DataTable(opts);
+        });
+    </script>
+</body>
+
+</html>
