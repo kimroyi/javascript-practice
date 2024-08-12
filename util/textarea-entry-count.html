@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Textarea Entry Count and Values Example</title>
+</head>
+<body>
+    <textarea id="myTextarea" rows="10" cols="50"></textarea>
+    <p>Number of entries: <span id="entryCount">0</span></p>
+    <p>Entry values: <span id="entryValues">[]</span></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textarea = document.getElementById('myTextarea');
+            const entryCount = document.getElementById('entryCount');
+            const entryValues = document.getElementById('entryValues');
+
+            textarea.addEventListener('input', function() {
+                // Get the value of the textarea
+                const text = textarea.value;
+
+                // Split the text by newlines and filter out empty lines
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+
+                // Update count and values
+                entryCount.textContent = lines.length;
+                entryValues.textContent = JSON.stringify(lines);
+            });
+        });
+    </script>
+</body>
+</html>
