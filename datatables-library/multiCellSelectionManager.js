@@ -1,6 +1,6 @@
 (function($) {
     // Define the function to initialize multi-cell selection and copy functionality
-    $.fn.initMultiCellSelection = function() {
+    $.fn.multiCellSelectionManager = function() {
         const table = this.DataTable(); // Initialize DataTables on the current element
 
         let isMouseDown = false;
